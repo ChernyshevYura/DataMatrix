@@ -9,9 +9,8 @@ namespace DataMatrix.Services.lmpl
         private readonly IDbConnection _db;
 
         public DbService(IConfiguration configuration)
-        {
-            NpgsqlConnectionStringBuilder connectionString = PostgreSqlUnix.NewPostgreSqlUnixSocketConnectionString();
-            _db = new NpgsqlConnection(configuration.GetConnectionString("SOnedb"));
+        {            
+            _db = new NpgsqlConnection(configuration.GetConnectionString("DB"));
         }
 
         public async Task<T> GetAsync<T>(string command, object parms)
